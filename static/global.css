@@ -7,7 +7,7 @@ body {
     margin-top: 15vh;
     align-items: center;
     flex-direction: column;
-    height: 80vh;
+    height: 75vh;
 }
 
 /** defaults */
@@ -40,7 +40,7 @@ body {
     --sdt-clear-color: #c33b3b;
     --sdt-btn-bg-hover: rgb(8, 156, 255);
     --sdt-btn-header-bg-hover: rgb(23, 168, 213);
-    --sdt-clock-bg: #181515;
+    --sdt-clock-bg: #0d0707;
     --sdt-clock-bg-minute: rgba(178, 178, 178, 0.25);
     --sdt-clock-bg-shadow: 0 0 128px 2px #ddd inset;
     --sdt-shadow: #0000;
@@ -51,7 +51,7 @@ body {
     --sdt-primary: #3b8cd3;
     --sdt-color: #eee;
     --sdt-color-selected: #eee;
-    --sdt-bg-main: #000;
+    --sdt-bg-main: #0d0707;
     --sdt-bg-today: var(--sdt-primary);
     --sdt-bg-clear: #dc3545;
     --sdt-today-bg: rgb(57, 98, 160);
@@ -155,10 +155,11 @@ body {
 }
 
 .timezone-input-class {
-    width: 300px;
     --listBackground: #0f0f0fb8;
     --itemColor: #dee9eb;
     --inputColor: #dee9eb;
+    --itemHoverColor: #dee9eb;
+    --itemHoverBG: #007bff8c;
 }
 
 .mb-10 {
@@ -169,16 +170,43 @@ body {
     margin-top: 0.75em;
 }
 
-.copy-link-btn {
-    /* the button needs a classy look */
-    background-color: #3b8cd3;
-    color: #fff;
-    border-radius: 5px;
-    border: none;
-    padding: 0.5em 1em;
-    font-size: 1.5vh;
-    font-weight: 400;
+.copy-text {
+	position: relative;
+    width: 280px;
+    background-color: #444444;
+	display: flex;
+}
+.copy-text input.text {
+    width: 280px;
+	padding: 10px;
+	font-size: 12px;
+    font-weight: 300;
+	border: 1px solid #444;
+    border-right: none;
+	outline: none;
+    color: #c4c1c1;
+    background-color: #0d0707;
     cursor: pointer;
-    /* and some hover effects wouldn't hurt */
-    transition: 0.2s;
+}
+.copy-text button {
+	padding: 10px;
+	border: 1px solid #444;
+    border-left: none;
+	outline: none;  
+	cursor: pointer;
+    background-color: #0f0f0fb8;
+}
+
+.home-icon > svg {
+    width: 40px;
+    height: 40px;
+}
+
+
+.footer, .footer a{
+    display: flex;
+    justify-content: center;
+    color: #ccc;
+    font-family: sans-serif;
+    text-decoration: none;
 }

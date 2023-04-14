@@ -4,6 +4,9 @@
 	import DateTimeDisplay from '../components/DateTimeDisplay.svelte';
 	import Select from 'svelte-select';
 	import { getTimezoneList } from './utils';
+    import CopyIcon from '../components/CopyIcon.svelte';
+	import TickIcon from '../components/TickIcon.svelte';
+	import HomeIcon from '../components/HomeIcon.svelte';
 
 	export let data: PageData;
 	const timezonesList = getTimezoneList();
@@ -30,7 +33,10 @@
 		data.timestamp = date.getTime() / 1000;
 	};
 
-	function bottomPosition(el: HTMLElement, { inputEl, visible, inputRect }: { inputEl: HTMLElement; visible: boolean; inputRect: DOMRect }) {
+	function bottomPosition(
+		el: HTMLElement,
+		{ inputEl, visible, inputRect }: { inputEl: HTMLElement; visible: boolean; inputRect: DOMRect }
+	) {
 		if (!visible) {
 			const calRect = el.getBoundingClientRect();
 			const style = ['position: absolute', 'z-index: 12250'];
@@ -39,9 +45,9 @@
 					? `right: 1rem`
 					: `left: ${inputRect.left}px`
 			);
-            // Position el above inputEl
-            style.push(`top: ${inputRect.top + window.scrollY - calRect.height - 1}px`);
-			el.style = style.join(';');
+			// Position el above inputEl
+			style.push(`top: ${inputRect.top + window.scrollY - calRect.height - 1}px`);
+			el.setAttribute('style', style.join(';'));
 			el.hidden = false;
 			document.body.appendChild(el);
 		}
@@ -57,8 +63,25 @@
 			destroy
 		};
 	}
+
+    let showClickedMessage = false;
+
+	function copyLinkToClipboard(event: MouseEvent & { currentTarget: HTMLElement}) {
+        navigator.clipboard.writeText(window.location.origin + '/?t=' + data.timestamp);
+        showClickedMessage = true;
+        setTimeout(() => {
+            showClickedMessage = false;
+        }, 2000);
+    }
+
 </script>
 
+<div>
+    <!-- Add a small home icon on the top left corner of the page -->
+    <a href="/" class="home-icon">
+        <HomeIcon/>
+    </a>
+</div>
 <div class="root flex roboto">
 	{#if data.mode === 'view'}
 		<DateTimeDisplay bind:timestamp={data.timestamp} bind:timezone={data.timezone} />
@@ -91,17 +114,29 @@
 				bind:value={inputDate}
 			/>
 		</div>
+
 		{#if data.timestamp}
-			<small class="mb-10">Link: {window.location.origin}/?t={data.timestamp}</small>
-			<button
-				class="flex shadow mb-10 copy-link-btn"
-				on:click={() =>
-					navigator.clipboard.writeText(window.location.origin + '/?t=' + data.timestamp)}
-				>Copy to clipboard</button
-			>
+            
+        <!-- Add an input element and a small button with copy icon in a row which appears like a single element-->
+
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div on:click={copyLinkToClipboard} class="copy-text">
+            <input type="text" class="text" value="{window.location.origin}/?t={data.timestamp}" />
+            <button >
+                {#if showClickedMessage}
+                    <TickIcon color="#0f0"/>
+                {:else}
+                    <CopyIcon/>
+                {/if}
+            </button>
+        </div>
 		{/if}
 		<!-- <div  class="flex flex-row mt-10">
             <Select items={timezonesList} bind:value={timezone} containerClasses="input-class timezone-input-class" containerStyles="background-color: #0f0f0f08;" ></Select> 
         </div> -->
 	{/if}
+</div>
+<!-- Create a footer -->
+<div class="footer" >
+    A hobby project by&nbsp;<a href="https://irshadpi.me" target="_blank">Irshad</a> 
 </div>
