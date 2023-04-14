@@ -1,4 +1,3 @@
-import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import { getTimezone, getValidatedMs } from './utils';
 export const ssr = false;
@@ -7,8 +6,9 @@ export const load: PageLoad = ({ url }) => {
     const timezone = getTimezone();
     const urlTimestamp = url.searchParams.get('t');
     if (!urlTimestamp) {
-        throw error(404, 'Invalid timestamp');
+        return { mode: 'edit', timezone:  { value: timezone }, timestamp: 0 };
     }
     const timestamp = getValidatedMs(urlTimestamp);
-    return { timezone:  { value: timezone }, timestamp };
+    console.log(timestamp);
+    return { mode: 'view', timezone:  { value: timezone }, timestamp };
 }

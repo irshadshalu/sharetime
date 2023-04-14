@@ -33,6 +33,7 @@
 	"type": "module",
 	"dependencies": {
 		"dayjs": "^1.11.6",
-		"svelte-select": "^4.4.7"
+		"svelte-select": "^4.4.7",
+		"svelty-picker": "^3.2.3"
 	}
 }

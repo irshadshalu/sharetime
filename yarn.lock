@@ -1725,6 +1725,11 @@ svelte@^3.44.0:
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.52.0.tgz#08259eff20904c63882b66a5d409a55e8c6743b8"
   integrity sha512-FxcnEUOAVfr10vDU5dVgJN19IvqeHQCS1zfe8vayTfis9A2t5Fhx+JDe5uv/C3j//bB1umpLJ6quhgs9xyUbCQ==
 
+svelty-picker@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/svelty-picker/-/svelty-picker-3.2.3.tgz#ab29ca6728726c13e432b8ea779f592ed604cd17"
+  integrity sha512-il+Kmhjw1CiO4ltu84RbI5Tzj+rMf0UY+V7KOmXjn4dzbp2rqGc+Hd4aR9ld8mLbWxKdmOU7GkxfYTTts4sUyw==
+
 tar@^6.1.11:
   version "6.1.11"
   resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.11.tgz#6760a38f003afa1b2ffd0ffe9e9abbd0eab3d621"
