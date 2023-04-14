@@ -43,3 +43,7 @@ export function getTimezoneList() {
         });
     });
 }
+
+export function getTodayDate() {
+    return dayjs().format('YYYY-MM-DD');
+}

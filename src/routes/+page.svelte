@@ -1,15 +1,15 @@
 <script lang="ts">
-	import type { PageData } from '.svelte-kit/types/src/routes/$types';
+    import type { PageData } from './$types';
 	import SveltyPicker from 'svelty-picker';
 	import DateTimeDisplay from '../components/DateTimeDisplay.svelte';
-	import { getTimezoneList } from './utils';
     import CopyIcon from '../components/CopyIcon.svelte';
 	import TickIcon from '../components/TickIcon.svelte';
 	import HomeIcon from '../components/HomeIcon.svelte';
+	import { getTodayDate } from './utils';
 
 	export let data: PageData;
 
-	let inputDate: string = new Date().toISOString().slice(0, 10);
+	let inputDate: string = getTodayDate();
 	let inputTime: string;
 	// Calculate timestamp based on inputDate and inputTime. time is in hh:ii P format
 	const calculateTimestamp = () => {
