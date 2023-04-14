@@ -5,6 +5,7 @@
     import CopyIcon from '../components/CopyIcon.svelte';
 	import TickIcon from '../components/TickIcon.svelte';
 	import HomeIcon from '../components/HomeIcon.svelte';
+	import ClockIcon from '../components/ClockIcon.svelte';
 	import { getTodayDate } from './utils';
 
 	export let data: PageData;
@@ -83,7 +84,7 @@
 	{#if data.mode === 'view'}
 		<DateTimeDisplay bind:timestamp={data.timestamp} bind:timezone={data.timezone} />
 	{:else}
-		<span class="font-thin flex shadow mb-10 size-large">Share Time.</span>
+		<span class="font-thin flex shadow mb-10 size-large">ShareTi.me</span>
 		<span class="font-thin flex shadow">Select date and time in your timezone</span>
 		<div class="flex flex-row mt-5">
 			<SveltyPicker
