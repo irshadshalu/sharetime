@@ -2,16 +2,13 @@
 	import type { PageData } from '.svelte-kit/types/src/routes/$types';
 	import SveltyPicker from 'svelty-picker';
 	import DateTimeDisplay from '../components/DateTimeDisplay.svelte';
-	import Select from 'svelte-select';
 	import { getTimezoneList } from './utils';
     import CopyIcon from '../components/CopyIcon.svelte';
 	import TickIcon from '../components/TickIcon.svelte';
 	import HomeIcon from '../components/HomeIcon.svelte';
 
 	export let data: PageData;
-	const timezonesList = getTimezoneList();
 
-	let timezone: { value: string } | undefined = data.timezone;
 	let inputDate: string = new Date().toISOString().slice(0, 10);
 	let inputTime: string;
 	// Calculate timestamp based on inputDate and inputTime. time is in hh:ii P format
@@ -138,5 +135,5 @@
 </div>
 <!-- Create a footer -->
 <div class="footer" >
-    A hobby project by&nbsp;<a href="https://irshadpi.me" target="_blank">Irshad</a> 
+    Made with 💙 by&nbsp;<a href="https://irshadpi.me" target="_blank">Irshad</a> 
 </div>

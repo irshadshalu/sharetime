@@ -1,6 +1,7 @@
 import type { PageLoad } from './$types';
 import { getTimezone, getValidatedMs } from './utils';
 export const ssr = false;
+export const prerender = true
 
 export const load: PageLoad = ({ url }) => {
     const timezone = getTimezone();
