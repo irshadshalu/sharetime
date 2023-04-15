@@ -5,7 +5,6 @@
     import CopyIcon from '../components/CopyIcon.svelte';
 	import TickIcon from '../components/TickIcon.svelte';
 	import HomeIcon from '../components/HomeIcon.svelte';
-	import ClockIcon from '../components/ClockIcon.svelte';
 	import { getTodayDate } from './utils';
 
 	export let data: PageData;
@@ -119,7 +118,7 @@
 
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div on:click={copyLinkToClipboard} class="copy-text">
-            <input type="text" class="text" value="{window.location.origin}/?t={data.timestamp}" />
+            <input readonly type="text" class="text" value="{window.location.origin}/?t={data.timestamp}" />
             <button >
                 {#if showClickedMessage}
                     <TickIcon color="#0f0"/>
@@ -136,5 +135,5 @@
 </div>
 <!-- Create a footer -->
 <div class="footer" >
-    Made with 💙 by&nbsp;<a href="https://irshadpi.me" target="_blank">Irshad</a> 
+    Made with 💙 by&nbsp;<a href="https://irshadpi.me" rel="noreferrer" target="_blank">Irshad</a> 
 </div>
