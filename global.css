@@ -83,12 +83,12 @@ body {
 }
 
 .size-xlarge {
-    font-size: 10vh;
+    font-size: 4em;
     font-weight: 400;
 }
 
 .size-large {
-    font-size: 4vh;
+    font-size: 3em;
 }
 
 .font-thin {
@@ -96,11 +96,11 @@ body {
 }
 
 .size-medium {
-    font-size: 3vh;
+    font-size: 2em;
 }
 
 .size-normal {
-    font-size: 1.5vh;
+    font-size: 1em;
     font-weight: 400;
 }
 
@@ -143,12 +143,12 @@ body {
 }
 
 .time-input-class {
-    font-size: 3vh;
+    font-size: 3em;
     font-weight: 400;
 }
 
 .date-input-class {
-    font-size: 2vh;
+    font-size: 1.2em;
     font-weight: 300;
     padding-top: 3px;
     padding-bottom: 3px;
