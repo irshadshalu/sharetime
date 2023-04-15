@@ -39,7 +39,7 @@ export function getDate(timestamp: number, timezone: string = dayjs.tz.guess() )
 export function getTimezoneList() {
     return TIMEZONES.flatMap((t) => { 
         return t.utc.map((utcCode) => {
-            return { value: utcCode, label: `${utcCode} (${t.display})` }
+            return { value: utcCode, label: `${utcCode} (${t.display}) - ${t.abbr}` }
         });
     });
 }

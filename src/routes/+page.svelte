@@ -135,5 +135,5 @@
 </div>
 <!-- Create a footer -->
 <div class="footer" >
-    Made with 💙 by&nbsp;<a href="https://irshadpi.me" rel="noreferrer" target="_blank">Irshad</a> 
+    &copy;&nbsp;<a href="https://irshadpi.me" rel="noreferrer" target="_blank">Irshad</a> 
 </div>
