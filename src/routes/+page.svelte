@@ -1,17 +1,16 @@
 <script lang="ts">
-    import type { PageData } from './$types';
+	import type { PageData } from './$types';
 	import SveltyPicker from 'svelty-picker';
 	import DateTimeDisplay from '../components/DateTimeDisplay.svelte';
-    import CopyIcon from '../components/CopyIcon.svelte';
-	import TickIcon from '../components/TickIcon.svelte';
-	import HomeIcon from '../components/HomeIcon.svelte';
-	import { getTodayDate } from './utils';
+	import HomeIcon from '../components/icons/HomeIcon.svelte';
+	import { getTodayDate, bottomPosition } from './utils';
+	import CopyInput from '../components/CopyInput.svelte';
 
 	export let data: PageData;
 
 	let inputDate: string = getTodayDate();
 	let inputTime: string;
-	// Calculate timestamp based on inputDate and inputTime. time is in hh:ii P format
+
 	const calculateTimestamp = () => {
 		const date = new Date(inputDate);
 		if (!inputTime) {
@@ -29,62 +28,19 @@
 		date.setMinutes(minutes);
 		data.timestamp = date.getTime() / 1000;
 	};
-
-	function bottomPosition(
-		el: HTMLElement,
-		{ inputEl, visible, inputRect }: { inputEl: HTMLElement; visible: boolean; inputRect: DOMRect }
-	) {
-		if (!visible) {
-			const calRect = el.getBoundingClientRect();
-			const style = ['position: absolute', 'z-index: 12250'];
-			style.push(
-				inputRect.x + calRect.width > window.innerWidth
-					? `right: 1rem`
-					: `left: ${inputRect.left}px`
-			);
-			// Position el above inputEl
-			style.push(`top: ${inputRect.top + window.scrollY - calRect.height - 1}px`);
-			el.setAttribute('style', style.join(';'));
-			el.hidden = false;
-			document.body.appendChild(el);
-		}
-		el.hidden = false;
-
-		function destroy() {
-			if (el.parentNode) {
-				el.parentNode.removeChild(el);
-			}
-		}
-
-		return {
-			destroy
-		};
-	}
-
-    let showClickedMessage = false;
-
-	function copyLinkToClipboard(event: MouseEvent & { currentTarget: HTMLElement}) {
-        navigator.clipboard.writeText(window.location.origin + '/?t=' + data.timestamp);
-        showClickedMessage = true;
-        setTimeout(() => {
-            showClickedMessage = false;
-        }, 2000);
-    }
-
 </script>
 
 <div>
-    <!-- Add a small home icon on the top left corner of the page -->
-    <a href="/" class="home-icon">
-        <HomeIcon/>
-    </a>
+	<a href="/" class="home-icon">
+		<HomeIcon />
+	</a>
 </div>
 <div class="root flex roboto">
 	{#if data.mode === 'view'}
 		<DateTimeDisplay bind:timestamp={data.timestamp} bind:timezone={data.timezone} />
 	{:else}
 		<span class="font-thin flex shadow mb-10 size-large">ShareTi.me</span>
-		<span class="font-thin flex shadow">Select date and time in your timezone</span>
+		<span class="font-thin flex shadow">Share time across timezones.</span>
 		<div class="flex flex-row mt-5">
 			<SveltyPicker
 				pickerOnly={true}
@@ -113,27 +69,10 @@
 		</div>
 
 		{#if data.timestamp}
-            
-        <!-- Add an input element and a small button with copy icon in a row which appears like a single element-->
-
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div on:click={copyLinkToClipboard} class="copy-text">
-            <input readonly type="text" class="text" value="{window.location.origin}/?t={data.timestamp}" />
-            <button >
-                {#if showClickedMessage}
-                    <TickIcon color="#0f0"/>
-                {:else}
-                    <CopyIcon/>
-                {/if}
-            </button>
-        </div>
+			<CopyInput data={data} />
 		{/if}
-		<!-- <div  class="flex flex-row mt-10">
-            <Select items={timezonesList} bind:value={timezone} containerClasses="input-class timezone-input-class" containerStyles="background-color: #0f0f0f08;" ></Select> 
-        </div> -->
 	{/if}
 </div>
-<!-- Create a footer -->
-<div class="footer" >
-    &copy;&nbsp;<a href="https://irshadpi.me" rel="noreferrer" target="_blank">Irshad</a> 
+<div class="footer">
+	&copy;&nbsp;<a href="https://irshadpi.me" rel="noreferrer" target="_blank">Irshad</a>
 </div>

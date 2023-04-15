@@ -47,3 +47,35 @@ export function getTimezoneList() {
 export function getTodayDate() {
     return dayjs().format('YYYY-MM-DD');
 }
+
+
+export function bottomPosition(
+    el: HTMLElement,
+    { visible, inputRect }: { visible: boolean; inputRect: DOMRect }
+) {
+    if (!visible) {
+        const calRect = el.getBoundingClientRect();
+        const style = ['position: absolute', 'z-index: 12250'];
+        style.push(
+            inputRect.x + calRect.width > window.innerWidth
+                ? `right: 1rem`
+                : `left: ${inputRect.left}px`
+        );
+        // Position el above inputEl
+        style.push(`top: ${inputRect.top + window.scrollY - calRect.height - 1}px`);
+        el.setAttribute('style', style.join(';'));
+        el.hidden = false;
+        document.body.appendChild(el);
+    }
+    el.hidden = false;
+
+    function destroy() {
+        if (el.parentNode) {
+            el.parentNode.removeChild(el);
+        }
+    }
+
+    return {
+        destroy
+    };
+}

@@ -10,6 +10,5 @@ export const load: PageLoad = ({ url }) => {
         return { mode: 'edit', timezone:  { value: timezone }, timestamp: 0 };
     }
     const timestamp = getValidatedMs(urlTimestamp);
-    console.log(timestamp);
     return { mode: 'view', timezone:  { value: timezone }, timestamp };
 }
