@@ -8,6 +8,9 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
+		paths: {
+			relative: false,
+		},
 		adapter: adapter()
 	}
 };

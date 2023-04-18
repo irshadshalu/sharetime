@@ -554,7 +554,7 @@ export const TIMEZONES: Timezone[] = [
       "offset": 1,
       "isdst": true,
       "text": "() Casablanca",
-      "display": "()",
+      "display": "+1:00",
       "utc": [
         "Africa/Casablanca",
         "Africa/El_Aaiun"
@@ -566,7 +566,7 @@ export const TIMEZONES: Timezone[] = [
       "offset": 0,
       "isdst": false,
       "text": "() Coordinated Universal Time",
-      "display": "()",
+      "display": "+0:00",
       "utc": [
         "America/Danmarkshavn",
         "Etc/GMT"
@@ -578,7 +578,7 @@ export const TIMEZONES: Timezone[] = [
       "offset": 0,
       "isdst": false,
       "text": "() Edinburgh, London",
-      "display": "() Edinburgh,",
+      "display": "+0:00",
       "utc": [
         "Europe/Isle_of_Man",
         "Europe/Guernsey",
@@ -606,7 +606,7 @@ export const TIMEZONES: Timezone[] = [
       "offset": 1,
       "isdst": true,
       "text": "() Dublin, Lisbon",
-      "display": "() Dublin,",
+      "display": "+1:00",
       "utc": [
         "Atlantic/Canary",
         "Atlantic/Faeroe",
@@ -621,7 +621,7 @@ export const TIMEZONES: Timezone[] = [
       "offset": 0,
       "isdst": false,
       "text": "() Monrovia, Reykjavik",
-      "display": "() Monrovia,",
+      "display": "+0:00",
       "utc": [
         "Africa/Abidjan",
         "Africa/Accra",
