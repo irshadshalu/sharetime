@@ -3,13 +3,16 @@
 	import SveltyPicker from 'svelty-picker';
 	import DateTimeDisplay from './DateTimeDisplay.svelte';
 	import HomeIcon from './icons/HomeIcon.svelte';
-	import { getTodayDate, bottomPosition } from '../helpers/utils';
+	import { getTodayDate, bottomPosition, getTimezoneList } from '../helpers/utils';
 	import CopyInput from './CopyInput.svelte';
-
+	import Select from "svelte-select";
+  
 	export let data: PageData;
 
 	let inputDate: string = getTodayDate();
 	let inputTime: string;
+
+	const timezonesList = getTimezoneList();
 
 	const calculateTimestamp = () => {
 		const date = new Date(inputDate);
@@ -28,8 +31,6 @@
 		date.setMinutes(minutes);
 		data.timestamp = date.getTime() / 1000;
 	};
-
-
 </script>
 
 <div>
@@ -69,12 +70,25 @@
 				bind:value={inputDate}
 			/>
 		</div>
+		<label class="mt-5" for="timezone-select">Time Zone (detected)</label>
+
+		<div class="flex flex-row">
+			<Select
+				id="timezone-select"
+				required
+				clearable={false}
+				items={timezonesList}
+				bind:value={data.timezone}
+				class="input-class timezone-input-class mb-10"
+				containerStyles="background-color: #0f0f0f08;"
+			/>
+		</div>
 
 		{#if data.timestamp}
 			<CopyInput data={data} />
 		{/if}
 	{/if}
-</div>
-<div class="footer">
-	&copy;&nbsp;<a href="https://irshadpi.me" rel="noreferrer" target="_blank">Irshad</a>
+	<div class="footer">
+		&copy;&nbsp;<a href="https://irshadpi.me" rel="noreferrer" target="_blank">Irshad</a>
+	</div>
 </div>

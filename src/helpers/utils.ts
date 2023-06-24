@@ -39,7 +39,7 @@ export function getDate(timestamp: number, timezone: string = dayjs.tz.guess() )
 export function getTimezoneList() {
     return TIMEZONES.flatMap((t) => { 
         return t.utc.map((utcCode) => {
-            return { value: utcCode, label: `${utcCode} (${t.display}) - ${t.abbr}` }
+            return { value: utcCode, label: `${utcCode} (${t.display}) - ${t.abbr}`, offset: t.display }
         });
     });
 }
@@ -147,9 +147,9 @@ export function getModeForUrl(url: URL) {
 }
 
 // Used dayjs to convert timestamp to YYYY-MM-DD HH:mm Z format
-export function convertTimestampToString(timestamp: number) {
-    const timezone = dayjs(timestamp).format('Z');
-    const normalizedTimezone = normalizeTimezoneOffset(timezone);
+export function convertTimestampToString(timestamp: number, timezoneOffset: string) {
+    console.log(timezoneOffset);
     const dateString = dayjs(timestamp).format('YYYY-MM-DD/H:mm');
-    return `${dateString}/${normalizedTimezone}`;
+
+    return `${dateString}/${timezoneOffset}`;
 }

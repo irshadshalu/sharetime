@@ -16,6 +16,6 @@
     <span class="flex shadow size-xlarge">{ time }</span>
     <span class="flex shadow size-medium">{ date }</span>
     <div class="flex flex-row m-5 size-normal">
-        <Select items={timezonesList} bind:value={timezone} containerClasses="input-class timezone-input-class" containerStyles="background-color: #0f0f0f08;"></Select>
+        <Select items={timezonesList} bind:value={timezone} class="input-class timezone-input-class" containerStyles="background-color: #0f0f0f08;"></Select>
     </div>
 </div>
