@@ -72,7 +72,7 @@
 		</div>
 		<label class="mt-5" for="timezone-select">Timezone</label>
 
-		<div class="flex flex-row">
+		<div class="flex flex-row m-5">
 			<Select
 				id="timezone-select"
 				clearable={false}
