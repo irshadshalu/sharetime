@@ -6,7 +6,7 @@
     
 	export let data: PageData;
 	let showClickedMessage = false;
-    let outputDateString;
+    let outputDateString: string;
 
     $: outputDateString = convertTimestampToString(data.timestamp * 1000, data.timezone.offset);
 

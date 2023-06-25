@@ -25,7 +25,7 @@ export function getValidatedMs(slug: string) {
 }
 
 export function getTimezone() {
-    return dayjs.tz.guess();
+    return dayjs.tz.guess() || "Etc/GMT";
 }
 
 export function getTime(timestamp: number, timezone: string = dayjs.tz.guess()) {
@@ -131,24 +131,24 @@ export function parsePathToTime(path: string) {
 
 export function getModeForUrl(url: URL) {
     const timezone = getTimezone();
+    const offset = getTimezoneList().find((t) => t.value === timezone)!.offset;
 
     const urlTimestamp = url.searchParams.get('t');
 
     if (urlTimestamp) {
-        return { mode: 'view', timezone:  { value: timezone }, timestamp: getValidatedMs(urlTimestamp) };
+        return { mode: 'view', timezone:  { value: timezone, offset: offset }, timestamp: getValidatedMs(urlTimestamp) };
     }
 
     if (url.pathname === '/') {
-        return { mode: 'edit', timezone:  { value: timezone }, timestamp: 0 };
+        return { mode: 'edit', timezone:  { value: timezone, offset: offset }, timestamp: 0 };
     }
 
     const timestamp = parsePathToTime(url.pathname);
-    return { mode: 'view', timezone:  { value: timezone }, timestamp };
+    return { mode: 'view', timezone:  { value: timezone, offset: offset }, timestamp };
 }
 
 // Used dayjs to convert timestamp to YYYY-MM-DD HH:mm Z format
 export function convertTimestampToString(timestamp: number, timezoneOffset: string) {
-    console.log(timezoneOffset);
     const dateString = dayjs(timestamp).format('YYYY-MM-DD/H:mm');
 
     return `${dateString}/${timezoneOffset}`;

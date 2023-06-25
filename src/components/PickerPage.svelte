@@ -70,12 +70,11 @@
 				bind:value={inputDate}
 			/>
 		</div>
-		<label class="mt-5" for="timezone-select">Time Zone (detected)</label>
+		<label class="mt-5" for="timezone-select">Timezone</label>
 
 		<div class="flex flex-row">
 			<Select
 				id="timezone-select"
-				required
 				clearable={false}
 				items={timezonesList}
 				bind:value={data.timezone}
