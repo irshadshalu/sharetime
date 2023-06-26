@@ -4,10 +4,10 @@ body {
 }
 
 .root {
-	margin-top: 13vh;
+	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	height: 75vh;
+	height: 90vh;
 }
 
 /** defaults */
@@ -155,11 +155,10 @@ body {
 }
 
 .timezone-input-class {
-	--listBackground: #0f0f0fb8;
-	--itemColor: #dee9eb;
-	--inputColor: #dee9eb;
-	--itemHoverColor: #dee9eb;
-	--itemHoverBG: #007bff8c;
+	--list-background: #0f0f0fb8;
+	--item-color: #dee9eb;
+	--input-color: #dee9eb;
+	--item-hover-bg: #007bff8c;
 }
 
 .mb-10 {
@@ -204,6 +203,7 @@ body {
 
 .footer,
 .footer a {
+	margin-top: 10px;
 	display: flex;
 	justify-content: center;
 	color: #ccc;
