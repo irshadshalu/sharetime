@@ -48,6 +48,13 @@ export function getTodayDate() {
     return dayjs().format('YYYY-MM-DD');
 }
 
+export function getTimestampFromDateTime(inputDate: string, inputTime: string) {
+    const parsedDate = dayjs(`${inputDate} ${inputTime}`);
+    if (!parsedDate.isValid()) {
+        throw error(400, 'Invalid date or time');
+    }
+    return parsedDate.valueOf();
+}
 
 export function bottomPosition(
     el: HTMLElement,

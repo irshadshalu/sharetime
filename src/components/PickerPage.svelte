@@ -3,7 +3,12 @@
 	import SveltyPicker from 'svelty-picker';
 	import DateTimeDisplay from './DateTimeDisplay.svelte';
 	import HomeIcon from './icons/HomeIcon.svelte';
-	import { getTodayDate, bottomPosition, getTimezoneList } from '../helpers/utils';
+	import {
+		getTodayDate,
+		bottomPosition,
+		getTimezoneList,
+		getTimestampFromDateTime
+	} from '../helpers/utils';
 	import CopyInput from './CopyInput.svelte';
 	import Select from "svelte-select";
   
@@ -19,17 +24,8 @@
 		if (!inputTime) {
 			return;
 		}
-		const time = inputTime.split(':');
-		const hours = parseInt(time[0]);
-		const minutes = parseInt(time[1].slice(0, 2));
-		const amPm = time[1].slice(3);
-		if (amPm === 'PM') {
-			date.setHours(hours + 12);
-		} else {
-			date.setHours(hours);
-		}
-		date.setMinutes(minutes);
-		data.timestamp = date.getTime() / 1000;
+		const time = inputTime.split(' ')[0];
+		data.timestamp = getTimestampFromDateTime(inputDate, time) / 1000;
 	};
 </script>
 
