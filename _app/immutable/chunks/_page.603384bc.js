@@ -1,0 +1,1 @@
+import{g as r}from"./utils.af4f3c1b.js";const o=!1,t=!0,s=({url:e})=>r(e),l=Object.freeze(Object.defineProperty({__proto__:null,load:s,prerender:t,ssr:o},Symbol.toStringTag,{value:"Module"}));export{l as _,s as l,t as p,o as s};
